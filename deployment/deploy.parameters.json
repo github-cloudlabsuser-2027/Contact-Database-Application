@@ -1,45 +1,12 @@
 ﻿{
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "webAppName": {
-            "type": "string",
-            "defaultValue": "[concat('WebApp-', uniqueString(resourceGroup().id))]",
-            "metadata": {
-                "description": "Name for the Web App"
-            }
+            "value": "YourWebAppName"
         },
         "hostingPlanName": {
-            "type": "string",
-            "defaultValue": "[concat('HostingPlan-', uniqueString(resourceGroup().id))]",
-            "metadata": {
-                "description": "Name for the Hosting Plan"
-            }
+            "value": "YourHostingPlanName"
         }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Web/serverfarms",
-            "apiVersion": "2020-06-01",
-            "name": "[parameters('hostingPlanName')]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "F1",
-                "capacity": 1
-            },
-            "kind": "app"
-        },
-        {
-            "type": "Microsoft.Web/sites",
-            "apiVersion": "2020-06-01",
-            "name": "[parameters('webAppName')]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
-            ],
-            "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
-            }
-        }
-    ]
+    }
 }
