@@ -1,0 +1,15 @@
+﻿@model IEnumerable<CRUD_application_2.Models.User>
+
+<h2>Search Users</h2>
+
+<form action="@Url.Action("Search", "User")" method="get">
+    <input type="text" name="query" placeholder="Search by name or email" />
+    <input type="submit" value="Search" />
+</form>
+
+<ul>
+    @foreach (var user in Model)
+    {
+        <li>@user.Name - @user.Email</li>
+    }
+</ul>
