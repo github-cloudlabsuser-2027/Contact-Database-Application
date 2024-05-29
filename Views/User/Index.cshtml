@@ -8,6 +8,10 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    <form action="@Url.Action("Search", "User")" method="get">
+        <input type="text" name="query" placeholder="Search by name or email" required />
+        <input type="submit" value="Search" />
+    </form>
 </p>
 <table class="table">
     <tr>

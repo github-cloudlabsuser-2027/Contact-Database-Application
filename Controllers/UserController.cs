@@ -44,6 +44,13 @@ namespace CRUD_application_2.Controllers
             }
         }
 
+        // GET: User/Search
+        public ActionResult Search(string query)
+        {
+            var matchedUsers = users.Where(u => u.Name.Contains(query) || u.Email.Contains(query)).ToList();
+            return View(matchedUsers);
+        }
+
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
